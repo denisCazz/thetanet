@@ -197,4 +197,39 @@ import "../styles/effects.css";
   </section>
 </BaseLayout>
 
-<script src="/src/scripts/animation.js"></script>
+<!-- Rimuovi questo script esterno che causa problemi -->
+<!-- <script src="/src/scripts/.js"></script> -->
+
+<!-- Aggiungi lo script inlined direttamente nella pagina -->
+<script>
+  // Script per animare gli elementi quando entrano nel viewport
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card-appear");
+
+    // Aggiungi la classe visible alle card dopo un breve ritardo
+    setTimeout(() => {
+      cards.forEach((card) => {
+        card.classList.add("visible");
+      });
+    }, 300);
+
+    // Observer per le animazioni (se l'utente scorre via e poi torna)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      },
+    );
+
+    // Osserva le card
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>

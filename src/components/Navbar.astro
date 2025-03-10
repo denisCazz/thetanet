@@ -1,9 +1,9 @@
 ---
 const navItems = [
-  { title: 'Home', href: '/tesseract/' },
-  { title: 'Servizi', href: '/tesseract/services' },
-  { title: 'Chi Siamo', href: '/tesseract/about' },
-  { title: 'Contatti', href: '/tesseract/contact' },
+  { title: "Home", href: "/tesseract/" },
+  { title: "Servizi", href: "/tesseract/services" },
+  { title: "Chi Siamo", href: "/tesseract/about" },
+  { title: "Contatti", href: "/tesseract/contact" },
 ];
 ---
 
@@ -13,41 +13,75 @@ const navItems = [
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/tesseract/" class="text-xl font-bold text-blue-800">
-          <img src="images/logo.webp" alt="Tesseract Logo" class="h-10 w-auto rounded" />
+          <img
+            src="images/logo.webp"
+            alt="Tesseract Logo"
+            class="h-10 w-auto rounded-full"
+          />
         </a>
       </div>
-      
+
       <!-- Links per desktop -->
       <div class="hidden md:flex items-center space-x-4">
-        {navItems.map(item => (
-          <a href={item.href} class="px-3 py-2 text-gray-700 hover:text-blue-800 font-medium transition-colors">
-            {item.title}
-          </a>
-        ))}
-        <a href="/tesseract/contact" class="ml-4 px-4 py-2 bg-blue-800 text-white font-medium rounded-md hover:bg-blue-700 transition-colors">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="px-3 py-2 text-gray-700 hover:text-blue-800 font-medium transition-colors"
+            >
+              {item.title}
+            </a>
+          ))
+        }
+        <a
+          href="/tesseract/contact"
+          class="ml-4 px-4 py-2 bg-blue-800 text-white font-medium rounded-md hover:bg-blue-700 transition-colors lg:hidden"
+        >
           Contattaci
         </a>
       </div>
-      
+
       <!-- Menu mobile hamburger -->
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-button" class="text-gray-600 focus:outline-none" aria-label="Menu">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <button
+          id="mobile-menu-button"
+          class="text-gray-600 focus:outline-none"
+          aria-label="Menu"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
     </div>
-    
+
     <!-- Menu mobile dropdown (nascosto di default) -->
     <div id="mobile-menu" class="md:hidden hidden pb-4">
       <div class="flex flex-col space-y-2">
-        {navItems.map(item => (
-          <a href={item.href} class="px-3 py-2 text-gray-700 hover:text-blue-800 font-medium transition-colors block">
-            {item.title}
-          </a>
-        ))}
-        <a href="/tesseract/contact" class="px-4 py-2 bg-blue-800 text-white font-medium rounded-md hover:bg-blue-700 transition-colors block text-center mt-2">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="px-3 py-2 text-gray-700 hover:text-blue-800 font-medium transition-colors block"
+            >
+              {item.title}
+            </a>
+          ))
+        }
+        <a
+          href="/tesseract/contact"
+          class="px-4 py-2 bg-blue-800 text-white font-medium rounded-md hover:bg-blue-700 transition-colors block text-center mt-2"
+        >
           Contattaci
         </a>
       </div>
@@ -57,36 +91,39 @@ const navItems = [
 
 <script>
   // Script per gestire il menu hamburger
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
     if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
+      mobileMenuButton.addEventListener("click", () => {
         // Toggle della classe hidden
-        mobileMenu.classList.toggle('hidden');
-        
+        mobileMenu.classList.toggle("hidden");
+
         // Cambia l'icona hamburger/close
-        const icon = mobileMenuButton.querySelector('svg');
-        if (mobileMenu.classList.contains('hidden')) {
-          if(icon){
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+        const icon = mobileMenuButton.querySelector("svg");
+        if (mobileMenu.classList.contains("hidden")) {
+          if (icon) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
           }
         } else {
-          if(icon){
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+          if (icon) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
           }
         }
       });
-      
+
       // Chiudi il menu quando viene selezionato un link
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          const icon = mobileMenuButton.querySelector('svg');
-          if(icon){
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          const icon = mobileMenuButton.querySelector("svg");
+          if (icon) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
           }
         });
       });
