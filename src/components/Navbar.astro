@@ -5,6 +5,9 @@ const navItems = [
   { title: "Chi Siamo", href: "/thetanet/about" },
   { title: "Contatti", href: "/thetanet/contact" },
 ];
+
+import logo from "../assets/logo.webp";
+import Image from "astro/components/Image.astro";
 ---
 
 <nav class="bg-white shadow-md sticky top-0 z-999">
@@ -13,11 +16,7 @@ const navItems = [
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/thetanet/" class="text-xl font-bold text-blue-800">
-          <img
-            src="images/logo.webp"
-            alt="thetanet Logo"
-            class="h-10 w-auto rounded-full"
-          />
+          <Image src={logo} alt="thetanet Logo" class="h-10 w-auto rounded-full" />
         </a>
       </div>
 
