@@ -3,16 +3,16 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://deniscazz.github.io/tesseract',
+  site: 'https://deniscazz.github.io/thetanet',
   integrations: [
     sitemap(),
   ],
   vite: {
     plugins: [tailwindcss()],
   },
-  base: "/tesseract/",
+  base: "/thetanet/",
   build: {
-    site: 'https://deniscazz.github.io/tesseract',
+    site: 'https://deniscazz.github.io/thetanet',
   },
   
 })
