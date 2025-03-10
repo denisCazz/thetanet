@@ -1,88 +1,235 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-import logo from '../../public/images/logo.webp';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import logo from "../../public/images/logo.webp";
+import "../styles/effects.css";
 ---
 
-<BaseLayout title="Tesseract - Home">
-  <!-- Hero Section -->
-  <header class="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-20">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
-      <div class="w-full md:w-1/2 text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-          Soluzioni AI su Misura per la Tua Azienda
-        </h1>
-        <p class="text-lg md:text-xl mb-8 max-w-xl mx-auto md:mx-0 animate-fade-in">
-          Trasforma il tuo business con l'intelligenza artificiale. Offriamo consulenza personalizzata e soluzioni AI, seguendo ogni fase del processo di integrazione.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4 animate-fade-in">
-          <a href="/tesseract/services" class="px-8 py-4 bg-white text-blue-800 rounded-lg shadow-lg hover:bg-gray-100 transition-all">
-            Scopri i nostri servizi
-          </a>
-          <a href="/tesseract/contact" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-800 transition-all">
-            Contattaci
-          </a>
+<BaseLayout
+  title="thetanet - Home"
+  description="Soluzioni AI innovative e personalizzate per trasformare radicalmente il tuo business e darti un vantaggio competitivo reale"
+>
+  <!-- Hero Section con effetto aurora -->
+  <header
+    class="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-20 aurora-bg"
+  >
+    <div
+      class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6"
+    >
+      <div class="w-full text-center md:text-left md:w-1/2">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            <span class="text-3xl md:text-4xl block mb-2"
+              >Trasforma il Tuo Business con</span
+            >
+            <span class="aurora-text">Soluzioni AI Avanzate</span>
+          </h1>
+          <p
+            class="text-lg md:text-xl mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed"
+          >
+            <strong class="text-blue-200"
+              >Non limitarti a seguire il futuro, crealo.</strong
+            > La nostra consulenza personalizzata e le nostre soluzioni AI all'avanguardia
+            ti permetteranno di ottenere un vantaggio competitivo concreto nel tuo
+            settore.
+          </p>
+          <div class="flex flex-col md:flex-row gap-4">
+            <a
+              href="/thetanet/services"
+              class="px-8 py-4 bg-white text-blue-800 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition-all glow-effect"
+            >
+              Scopri i nostri servizi
+            </a>
+            <a
+              href="/thetanet/contact"
+              class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-blue-800 transition-all"
+            >
+              Contattaci ora
+            </a>
+          </div>
         </div>
       </div>
-      <div class="hidden md:block w-1/2 animate-slide-in">
-        <div class="relative w-96 h-96 mx-auto">
-          <div class="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full shadow-2xl"></div>
-          <Image src={logo} alt="Tesseract Logo" class="w-full h-full rounded-full object-cover shadow-2xl transform hover:rotate-6 transition-transform" />
+      <!-- Nascondi su schermi piccoli -->
+      <div class="hidden md:block w-full md:w-1/2">
+        <div
+          class="relative w-48 h-48 md:w-96 md:h-96 mx-auto"
+          style="animation: floating 6s ease-in-out infinite;"
+        >
+          <div
+            class="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full shadow-2xl"
+          >
+          </div>
+          <Image
+            src={logo}
+            alt="thetanet Logo"
+            width={500}
+            height={500}
+            class="w-full h-full rounded-full object-cover shadow-2xl transform hover:rotate-6 transition-transform"
+          />
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Benefits Section -->
+  <!-- Benefits Section con card animate -->
   <main class="py-20 bg-gray-50">
     <section class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">
-        Perché Scegliere Noi
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-blue-900">
+        Perché <span class="aurora-text">Scegliere Noi</span>
       </h2>
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-2">
+      <p class="text-center text-xl mb-12 max-w-3xl mx-auto text-gray-600">
+        Un team di esperti che ha studiato e lavorato con l'intelligenza
+        artificiale per anni, sempre all'ascolto del cliente per creare
+        soluzioni su misura.
+      </p>
+
+      <!-- Card dei benefit animate -->
+      <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Prima card -->
+        <div
+          class="hover-card card-appear bg-white p-8 rounded-lg shadow-lg border border-gray-200"
+        >
           <div class="text-blue-800 mb-4">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+            <svg
+              class="w-12 h-12"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path></svg
+            >
           </div>
-          <h3 class="text-xl font-semibold mb-4 text-blue-900">Personalizzazione</h3>
+          <h3 class="text-2xl font-bold mb-4 text-blue-900">Team di Esperti</h3>
           <p class="text-gray-700">
-            Soluzioni AI costruite sulle tue specifiche necessità.
+            Il nostro team è composto da professionisti con anni di esperienza
+            nello sviluppo di soluzioni AI. Abbiamo lavorato con aziende di ogni
+            dimensione e settore, accumulando un know-how unico che mettiamo al
+            tuo servizio.
           </p>
-        </article>
-        <article class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-2">
+        </div>
+
+        <!-- Seconda card -->
+        <div
+          class="hover-card card-appear bg-white p-8 rounded-lg shadow-lg border border-gray-200"
+        >
           <div class="text-blue-800 mb-4">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            <svg
+              class="w-12 h-12"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+              ></path></svg
+            >
           </div>
-          <h3 class="text-xl font-semibold mb-4 text-blue-900">Innovazione</h3>
+          <h3 class="text-2xl font-bold mb-4 text-blue-900">
+            Approccio Personalizzato
+          </h3>
           <p class="text-gray-700">
-            Strumenti avanzati per il tuo vantaggio competitivo.
+            Ogni business è unico. Per questo partiamo sempre dall'ascolto delle
+            tue esigenze specifiche. Creiamo soluzioni AI che si integrano
+            perfettamente nei tuoi processi esistenti, amplificandone
+            l'efficacia.
           </p>
-        </article>
-        <article class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-2">
+        </div>
+
+        <!-- Terza card -->
+        <div
+          class="hover-card card-appear bg-white p-8 rounded-lg shadow-lg border border-gray-200"
+        >
           <div class="text-blue-800 mb-4">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <svg
+              class="w-12 h-12"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
+            >
           </div>
-          <h3 class="text-xl font-semibold mb-4 text-blue-900">Supporto Dedicato</h3>
+          <h3 class="text-2xl font-bold mb-4 text-blue-900">
+            Tecnologia all'Avanguardia
+          </h3>
           <p class="text-gray-700">
-            Un team di esperti sempre al tuo fianco.
+            Investiamo costantemente nella ricerca e nello sviluppo per
+            garantirti l'accesso alle tecnologie AI più avanzate e performanti,
+            offrendoti un reale vantaggio competitivo nel tuo settore.
           </p>
-        </article>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Call to Action -->
-  <section class="py-20 bg-gradient-to-r from-blue-800 to-blue-900 text-white">
+  <!-- Call to Action con effetto aurora -->
+  <section
+    class="py-20 bg-gradient-to-r from-blue-800 to-blue-900 text-white aurora-bg"
+  >
     <div class="container mx-auto text-center px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
-        Contatta il Nostro Team
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Pronto a <span class="aurora-text">Rivoluzionare</span> il Tuo Business?
       </h2>
-      <p class="text-lg text-gray-200 mb-8 animate-fade-in">
-        Siamo qui per aiutarti a trasformare il tuo business. Contattaci oggi stesso per una consulenza personalizzata!
+      <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+        Il futuro dell'intelligenza artificiale è già qui. Non lasciare che la
+        tua concorrenza ti superi. Contattaci oggi stesso per una consulenza
+        gratuita e scopri come possiamo aiutarti.
       </p>
-      <a href="/tesseract/contact" class="px-10 py-4 bg-white text-blue-800 rounded-lg shadow-lg hover:bg-gray-100 transition-all animate-bounce">
-        Contattaci Ora
+      <a
+        href="/thetanet/contact"
+        class="px-10 py-4 bg-white text-blue-800 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition-all glow-effect"
+      >
+        Inizia Ora →
       </a>
     </div>
   </section>
 </BaseLayout>
+
+<!-- Rimuovi questo script esterno che causa problemi -->
+<!-- <script src="/src/scripts/.js"></script> -->
+
+<!-- Aggiungi lo script inlined direttamente nella pagina -->
+<script>
+  // Script per animare gli elementi quando entrano nel viewport
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card-appear");
+
+    // Aggiungi la classe visible alle card dopo un breve ritardo
+    setTimeout(() => {
+      cards.forEach((card) => {
+        card.classList.add("visible");
+      });
+    }, 300);
+
+    // Observer per le animazioni (se l'utente scorre via e poi torna)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      },
+    );
+
+    // Osserva le card
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>

@@ -1,20 +1,65 @@
 ---
-// Questo componente definisce il layout di base con un'area per il contenuto dinamico.
-import Navbar from '../components/Navbar.astro';
-import '../styles/global.css';
+// Layout di base con supporto per effetti visivi
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+import "../styles/effects.css";
 
-const { title = "Tesseract", description = "Soluzioni AI personalizzate per il tuo business" } = Astro.props;
+const {
+  title = "thetanet",
+  description = "Soluzioni AI personalizzate per il tuo business",
+} = Astro.props;
 ---
 
+<!doctype html>
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="logo.webp" />
     <link rel="stylesheet" href="src/styles/global.css" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{title}</title>
+    <!-- Aggiungiamo un CSS globale per assicurarci che tutto sia visibile -->
+    <style is:global>
+      /* Stili di base per migliorare l'accessibilità e la leggibilità */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+    <!-- Aggiungiamo uno script di preloading per rendere le animazioni più fluide -->
+    <script>
+      // Funzione per aggiungere la classe visible alle card appena possibile
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          document.querySelectorAll(".card-appear").forEach((card) => {
+            card.classList.add("visible");
+          });
+        }, 100);
+      });
+    </script>
   </head>
   <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
     <Navbar />
@@ -23,8 +68,12 @@ const { title = "Tesseract", description = "Soluzioni AI personalizzate per il t
     </main>
     <footer class="bg-gray-800 text-white py-6">
       <div class="container mx-auto px-6 text-center">
-        <p>&copy; {new Date().getFullYear()} Tesseract. Tutti i diritti riservati.</p>
+        <p>
+          &copy; {new Date().getFullYear()} thetanet. Tutti i diritti riservati.
+        </p>
       </div>
     </footer>
+    <!-- Rimuovi il caricamento dello script esterno che causa problemi -->
+    <!-- <script src="../scripts/animation.js" defer></script> -->
   </body>
 </html>

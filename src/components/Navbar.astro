@@ -1,94 +1,132 @@
-<nav class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 shadow-md">
-  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <!-- Logo -->
-    <a href="/tesseract/" class="text-2xl font-bold hover:text-indigo-500 transition">
-      Tesseract
-    </a>
+---
+const navItems = [
+  { title: "Home", href: "/thetanet/" },
+  { title: "Servizi", href: "/thetanet/services" },
+  { title: "Chi Siamo", href: "/thetanet/about" },
+  { title: "Contatti", href: "/thetanet/contact" },
+];
+---
 
-    <!-- Menu Links -->
-    <ul class="hidden md:flex space-x-6">
-      <li><a href="/tesseract/" class="hover:text-indigo-500 transition">Home</a></li>
-      <li><a href="/tesseract/services" class="hover:text-indigo-500 transition">Servizi</a></li>
-      <li><a href="/tesseract/about" class="hover:text-indigo-500 transition">Chi Siamo</a></li>
-      <li><a href="/tesseract/contact" class="hover:text-indigo-500 transition">Contatti</a></li>
-    </ul>
-
-    <!-- Actions -->
-    <!-- <div class="flex items-center space-x-4">
-      <div class="relative group">
-        <button 
-          class="flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg shadow hover:shadow-md transition">
-          <span id="selected-lang" class="text-sm">IT</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <ul 
-          id="lang-dropdown" 
-          class="absolute right-0 mt-2 w-20 bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 rounded-lg shadow-lg hidden">
-          <li><button class="w-full text-left px-4 py-2 hover:bg-indigo-100 dark:hover:bg-indigo-500" data-lang="it">IT</button></li>
-          <li><button class="w-full text-left px-4 py-2 hover:bg-indigo-100 dark:hover:bg-indigo-500" data-lang="en">EN</button></li>
-        </ul>
+<nav class="bg-white shadow-md sticky top-0 z-999">
+  <div class="container mx-auto px-6">
+    <div class="flex justify-between items-center py-3">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/thetanet/" class="text-xl font-bold text-blue-800">
+          <img
+            src="images/logo.webp"
+            alt="thetanet Logo"
+            class="h-10 w-auto rounded-full"
+          />
+        </a>
       </div>
 
-      <button 
-        id="theme-toggle" 
-        class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg shadow hover:shadow-md transition">
-        <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 15.5A5.5 5.5 0 1115.5 10 5.5 5.5 0 0110 15.5zm0 2A7.5 7.5 0 1017.5 10 7.5 7.5 0 0010 17.5z"></path>
-        </svg>
-        <svg id="theme-toggle-dark-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.293 13.707A8 8 0 116.707 3.293a8.1 8.1 0 0010.586 10.414z"></path>
-        </svg>
-      </button>
-    </div> -->
+      <!-- Links per desktop -->
+      <div class="hidden md:flex items-center space-x-4">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="px-3 py-2 text-gray-700 hover:text-blue-800 font-medium transition-colors"
+            >
+              {item.title}
+            </a>
+          ))
+        }
+        <a
+          href="/thetanet/contact"
+          class="ml-4 px-4 py-2 bg-blue-800 text-white font-medium rounded-md hover:bg-blue-700 transition-colors lg:hidden"
+        >
+          Contattaci
+        </a>
+      </div>
 
-    <!-- Hamburger Icon -->
-    <button
-      id="menu-toggle"
-      class="md:hidden focus:outline-none"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
+      <!-- Menu mobile hamburger -->
+      <div class="md:hidden flex items-center">
+        <button
+          id="mobile-menu-button"
+          class="text-gray-600 focus:outline-none"
+          aria-label="Menu"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile dropdown (nascosto di default) -->
+    <div id="mobile-menu" class="md:hidden hidden pb-4">
+      <div class="flex flex-col space-y-2">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="px-3 py-2 text-gray-700 hover:text-blue-800 font-medium transition-colors block"
+            >
+              {item.title}
+            </a>
+          ))
+        }
+        <a
+          href="/thetanet/contact"
+          class="px-4 py-2 bg-blue-800 text-white font-medium rounded-md hover:bg-blue-700 transition-colors block text-center mt-2"
+        >
+          Contattaci
+        </a>
+      </div>
+    </div>
   </div>
-
-  <!-- Mobile Menu -->
-  <ul
-    id="mobile-menu"
-    class="hidden absolute top-16 left-0 w-full bg-gray-50 dark:bg-gray-900 text-center space-y-4 py-4 shadow-md md:hidden"
-  >
-    <li><a href="/tesseract/" class="block hover:text-indigo-500 transition">Home</a></li>
-    <li><a href="/tesseract/services" class="block hover:text-indigo-500 transition">Servizi</a></li>
-    <li><a href="/tesseract/about" class="block hover:text-indigo-500 transition">Chi Siamo</a></li>
-    <li><a href="/tesseract/contact" class="block hover:text-indigo-500 transition">Contatti</a></li>
-  </ul>
 </nav>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+  // Script per gestire il menu hamburger
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    menuToggle.addEventListener('click', function() {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-      }
-    });
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener("click", () => {
+        // Toggle della classe hidden
+        mobileMenu.classList.toggle("hidden");
+
+        // Cambia l'icona hamburger/close
+        const icon = mobileMenuButton.querySelector("svg");
+        if (mobileMenu.classList.contains("hidden")) {
+          if (icon) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+        } else {
+          if (icon) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+          }
+        }
+      });
+
+      // Chiudi il menu quando viene selezionato un link
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          const icon = mobileMenuButton.querySelector("svg");
+          if (icon) {
+            icon.innerHTML =
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+          }
+        });
+      });
+    }
   });
 </script>
-
-<style>
-  /* Aggiungi queste regole CSS */
-  #mobile-menu {
-    transition: transform 0.2s ease-in-out;
-    transform: translateY(-100%);
-  }
-
-  #mobile-menu:not(.hidden) {
-    transform: translateY(0);
-  }
-</style>

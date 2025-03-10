@@ -1,0 +1,160 @@
+/* Effetto Aurora */
+.aurora-text {
+  position: relative;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    #c6ffdd,
+    #fbd786,
+    #f7797d,
+    #c6ffdd
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: aurora 6s linear infinite;
+}
+
+.aurora-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  background: linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 0.3) 0%,
+    rgba(200, 80, 192, 0.3) 50%,
+    rgba(255, 204, 112, 0.3) 100%
+  );
+  background-size: 400% 400%;
+  animation: aurora-bg 15s ease infinite;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.aurora-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Effetti Card */
+.hover-card {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-appear {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.card-appear.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-appear:nth-child(1) { transition-delay: 0.1s; }
+.card-appear:nth-child(2) { transition-delay: 0.3s; }
+.card-appear:nth-child(3) { transition-delay: 0.5s; }
+
+/* Animazioni */
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes aurora-bg {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Glow effect */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  z-index: -1;
+  background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(20px);
+}
+
+.glow-effect:hover::after {
+  opacity: 0.7;
+}
+
+/* Reduced motion media query for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-text,
+  .aurora-bg::before,
+  .hover-card,
+  .card-appear {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .aurora-bg::before {
+    opacity: 0.3; /* Ridotta opacità su mobile per migliorare la leggibilità */
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-5px) scale(1.01); /* Effetto più sottile su mobile */
+  }
+  
+  /* Riduci delay animazioni su mobile */
+  .card-appear:nth-child(1) { transition-delay: 0.05s; }
+  .card-appear:nth-child(2) { transition-delay: 0.1s; }
+  .card-appear:nth-child(3) { transition-delay: 0.15s; }
+}
